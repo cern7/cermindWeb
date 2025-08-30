@@ -72,11 +72,14 @@
     </main>
     <footer>
       <div class="small">
-        <strong>CERMIND © 2025 </strong><span class="sep">•</span> Toate
-        drepturile rezervate <span class="sep">•</span>
-        <a href="/privacy/">Politica de confidențialitate</a>
+        <router-link to="/"><strong>CERMIND © 2025 </strong></router-link>
+        <span class="sep">•</span> Toate drepturile rezervate
         <span class="sep">•</span>
-        <a href="/terms/">Termeni și Condiții</a>
+        <router-link to="/privacy">Politica de confidențialitate</router-link>
+        <span class="sep">•</span>
+        <router-link to="/terms">Termeni și Condiții</router-link>
+        <span class="sep">•</span>
+        <router-link to="/contact">Contact</router-link>
       </div>
     </footer>
   </div>
