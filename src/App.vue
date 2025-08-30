@@ -25,7 +25,11 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/guide" class="nav-link" @click="closeMobileMenu">
+              <router-link
+                to="/guide"
+                class="nav-link"
+                @click="closeMobileMenu"
+              >
                 {{ $t("nav.guide") }}
               </router-link>
             </li>
@@ -39,7 +43,11 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/terms" class="nav-link" @click="closeMobileMenu">
+              <router-link
+                to="/terms"
+                class="nav-link"
+                @click="closeMobileMenu"
+              >
                 {{ $t("nav.terms") }}
               </router-link>
             </li>
@@ -100,6 +108,8 @@ export default {
 <style>
 /* CSS Custom Properties for Design System */
 :root {
+  --logo-color-primary: #002540;
+  --logo-color-secondary: #0070f7;
   --primary-color: #251b10;
   --primary-light: #d4b896;
   --primary-dark: #a08b6f;
@@ -138,6 +148,23 @@ export default {
   --z-modal: 1000;
 }
 
+/* Brand/Logo Styles - Fixed positioning */
+.brand-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  transition: color var(--transition-fast);
+  flex-shrink: 0;
+  z-index: 10;
+  position: relative;
+}
+
+.brand-link:hover {
+  color: var(--primary-dark);
+  background-color: rgba(0, 0, 0, 0);
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -147,17 +174,19 @@ export default {
 
 html {
   scroll-behavior: smooth;
+   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 footer {
   margin-top: 100px;
-  background: #C2A585; /* palette color */
+  background: #c2a585; /* palette color */
   color: #fff;
   font-size: 15px;
   text-align: center;
   padding: 24px 12px;
   border-radius: 12px 12px 0 0; /* rounded top edges */
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
 }
 
 footer a {
@@ -165,10 +194,11 @@ footer a {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
+  border-radius: (3px, 3px, 3px, 3px);
 }
 
 footer a:hover {
-  color: #f5f3ef;
+  background-color: rgba(255, 255, 255, 0); /* hover highlite-color */
   text-decoration: underline;
 }
 
@@ -177,7 +207,7 @@ footer .small {
   color: #fff;
   opacity: 0.9;
   display: flex;
-  flex-wrap: wrap;   /* allow wrapping */
+  flex-wrap: wrap; /* allow wrapping */
   justify-content: center;
   gap: 8px;
 }
@@ -187,7 +217,7 @@ footer .sep {
 }
 
 /* 📱 Mobile styles */
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   footer .small {
     flex-direction: column; /* stack each item */
     gap: 4px;
@@ -243,31 +273,19 @@ body {
   overflow: hidden; /* Prevent content overflow */
 }
 
-/* Brand/Logo Styles - Fixed positioning */
-.brand-link {
-  text-decoration: none;
-  color: var(--primary-color);
-  font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.25rem); /* Responsive logo size */
-  transition: color var(--transition-fast);
-  flex-shrink: 0;
-  z-index: 10; /* Ensure logo stays above nav links */
-  position: relative;
-}
-
-.brand-link:hover {
-  color: var(--primary-dark);
-}
-
 .logo {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--logo-color-primary),
+    var(--logo-color-secondary)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 800;
   font-size: clamp(1.125rem, 3vw, 1.5rem); /* Responsive logo text */
   letter-spacing: 0.05em;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
 }
 
@@ -352,7 +370,7 @@ body {
 /* Active link styling - White background */
 .nav-link.router-link-active {
   color: var(--primary-color);
-  background-color:rgba(243, 244, 246, 0.35);
+  background-color: rgba(243, 244, 246, 0.35);
   box-shadow: 0 2px 8px rgba(194, 165, 133, 0.15);
   font-weight: 600;
 }
@@ -380,7 +398,7 @@ body {
 }
 
 /* Responsive Design - Fixed width constraints */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .mobile-toggle {
     display: flex;
   }
@@ -392,7 +410,7 @@ body {
   }
 
   .nav-links {
-    position: absolute;
+    position: fixed;
     top: 100%;
     left: 0;
     right: 0;
@@ -407,7 +425,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all var(--transition-base);
-    border-radius: 0 0 15px 15px;
+    border-radius: 15px 15px 15px 15px;
     max-width: 100%; /* Full width in mobile menu */
     width: 100%;
   }
