@@ -3,7 +3,7 @@
     <div class="page-header">
       <div class="container">
         <div class="header-content" ref="headerContent">
-          <h1 class="page-title">Terms of Service</h1>
+          <h1 class="page-title">Termeni și Condiții</h1>
           <p class="page-subtitle">
             Please read these terms carefully before using our services.
           </p>
@@ -76,7 +76,7 @@ export default {
   name: 'Terms',
   data() {
     return {
-      lastUpdated: 'January 15, 2024',
+      lastUpdated: 'August 8, 2025',
       observer: null,
       sections: [
         {

@@ -31,7 +31,10 @@
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">De ce să alegi Cermate</h2>
-          <p class="section-subtitle">Solutie simpla pentru nevoi complexe</p>
+          <p class="section-subtitle">
+            Soluție simplă pentru nevoi complexe — de până la
+            <strong>10 ori mai rapid</strong> în trimiterea ofertelor.
+          </p>
         </div>
 
         <div class="features-grid">
@@ -57,14 +60,14 @@
     <section class="cta section" ref="ctaSection">
       <div class="container">
         <div class="cta-content">
-          <h2 class="cta-title">Ready to Get Started?</h2>
+          <h2 class="cta-title">Ești pregătit să începi?</h2>
           <p class="cta-description">
-            Join thousands of satisfied users who have transformed their
-            experience
+            Alătură-te practicienilor în insolvență care își optimizează
+            activitatea și câștigă mai mult timp pentru dosarele importante.
           </p>
           <div class="cta-actions">
             <router-link to="/guide" class="btn btn-primary btn-lg">
-              Start Your Journey
+              Începe chiar acum
             </router-link>
           </div>
         </div>
@@ -76,7 +79,7 @@
 <script>
 // Using composition-like approach for better organization
 import { useHead } from "@vueuse/head";
-import { Search, FileText, Send, FolderSync } from "lucide-vue-next";
+import { Search, FileText, Send, FolderSync, Timer, Database } from "lucide-vue-next";
 
 export default {
   name: "Home",
@@ -117,6 +120,8 @@ export default {
     FileText,
     Send,
     FolderSync,
+    Timer,
+    Database,
   },
   data() {
     return {
@@ -144,6 +149,18 @@ export default {
           title: "Gestionare dosare",
           description:
             "Organizarea și gestionarea centralizată a tuturor dosarelor într-un singur loc.",
+        },
+        {
+          icon: "Timer", // sau "Timer" / "Activity" din lucide-vue-next
+          title: "Eficiență dovedită",
+          description:
+            "Testată împreună cu practicieni în insolvență: trimiți același număr de oferte de până la 10 ori mai rapid.",
+        },
+        {
+          icon: "Database", // din lucide-vue-next
+          title: "Date oficiale",
+          description:
+            "Conectare directă la baza de date a Ministerului Justiției pentru informații corecte și actualizate.",
         },
       ],
       observer: null,
@@ -337,8 +354,9 @@ export default {
 }
 
 .section-subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--text-secondary);
+  font-size: var(--font-size-2xl);
+  color: var(--primary-light);
+  font-weight: 300;
 }
 
 .features-grid {
@@ -420,23 +438,26 @@ export default {
     var(--primary-color) 0%,
     var(--primary-dark) 100%
   );
-  color: white;
+  border-radius: (25px 25px 25px 25px);
 }
 
 .cta-content {
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-
-.cta-content.animate-in {
   opacity: 1;
   transform: translateY(0);
 }
 
+.cta-content.animate-in {
+  opacity: 0;
+  transform: translateY(0);
+}
+
+.cta-title,
+.cta-description {
+  color: #fff;
+}
 .cta-title {
   font-size: var(--font-size-3xl);
   font-weight: 600;
@@ -450,16 +471,15 @@ export default {
 }
 
 .btn-lg {
-  padding: var(--space-md) var(--space-xl);
-  font-size: var(--font-size-lg);
   background-color: white;
   color: var(--primary-color);
+  border: 2px solid #fff;
 }
 
 .btn-lg:hover {
-  background-color: var(--background-secondary);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background-color: var(--text-primary);
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0);
 }
 
 /* Responsive Design */

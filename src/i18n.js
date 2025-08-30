@@ -7,6 +7,7 @@ const messages = {
       privacy: "Politica de confidențialitate",
       terms: "Termeni și condiții",
       guide: "Ghid utilizare",
+      contact: "Contact",
     },
     home: {
       title: "Cermate — Automatizare pentru practicieni în insolvență",
@@ -25,6 +26,7 @@ const messages = {
       privacy: "Privacy Policy",
       terms: "Terms & Conditions",
       guide: "User Guide",
+      contact: "Contact",
     },
     home: {
       title: "Cermate — Automation for insolvency practitioners",

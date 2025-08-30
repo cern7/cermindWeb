@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Privacy from "../views/Privacy.vue";
-import Terms from "../views/Terms.vue";
-import Guide from "../views/Guide.vue";
+import Home from "@/views/Home.vue";
+import Privacy from "@/views/Privacy.vue";
+import Terms from "@/views/Terms.vue";
+import Guide from "@/views/Guide.vue";
+import Contact from "@/views/Contact.vue";
 
 const routes = [
   {
@@ -41,6 +42,16 @@ const routes = [
       title: "Getting Started Guide - Cermind",
       description:
         "Complete guide to help you get started with our platform in just 5 minutes.",
+    },
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: Contact,
+    meta: {
+      title: "Contact Us - Cermind",
+      description:
+        "Get in touch with our team for support, inquiries, or feedback.",
     },
   },
   {

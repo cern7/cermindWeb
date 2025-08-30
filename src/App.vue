@@ -51,6 +51,15 @@
                 {{ $t("nav.terms") }}
               </router-link>
             </li>
+            <li class="nav-item">
+              <router-link
+                to="/contact"
+                class="nav-link"
+                @click="closeMobileMenu"
+              >
+                {{ $t("nav.contact") }}
+              </router-link>
+            </li>
           </ul>
         </div>
       </nav>
@@ -174,7 +183,7 @@ export default {
 
 html {
   scroll-behavior: smooth;
-   overflow-x: hidden;
+  overflow-x: hidden;
   max-width: 100vw;
 }
 
@@ -194,7 +203,6 @@ footer a {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
-  border-radius: (3px, 3px, 3px, 3px);
 }
 
 footer a:hover {
@@ -236,12 +244,6 @@ body {
   font-size: var(--font-size-base);
 }
 
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 /* Header Styles - Fixed width and constrained layout */
 .header {
   position: sticky;
@@ -252,7 +254,7 @@ body {
   border-radius: 25px 25px 25px 25px; /* rounded bottom corners */
   z-index: var(--z-header);
   transition: all var(--transition-base);
-  width: 100%;
+
   min-width: 320px; /* Minimum width to prevent collapse */
 }
 
@@ -260,10 +262,19 @@ body {
   width: 100%;
 }
 
+#app {
+  /* overflow-x: hidden; */
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .nav-container {
-  width: 1200px; /* Fixed width instead of max-width */
-  max-width: calc(100vw - 2rem); /* Prevent overflow on small screens */
+  width: min(1200px, 100vw); /* Fixed width instead of max-width */
+  max-width: calc(100vw - 1rem); /* Prevent overflow on small screens */
   margin: 0 auto;
+  box-sizing: border-box;
   padding: 0 var(--space-md);
   display: flex;
   align-items: center;
@@ -312,7 +323,6 @@ body {
   background-color: var(--primary-color);
   transition: all var(--transition-base);
   margin: 2px 0;
-  border-radius: 1px;
 }
 
 .mobile-toggle.active .hamburger-line:nth-child(1) {
@@ -397,8 +407,14 @@ body {
   transform: translateY(-20px);
 }
 
+/* Additional constraint for very wide screens */
+@media (min-width: 1400px) {
+  .nav-container {
+    width: 100%; /* Maintain fixed width even on very wide screens */
+  }
+}
 /* Responsive Design - Fixed width constraints */
-@media (max-width: 1200px) {
+@media (max-width: 800px) {
   .mobile-toggle {
     display: flex;
   }
@@ -407,6 +423,7 @@ body {
     width: 100%; /* Full width on mobile */
     padding: 0 var(--space-sm);
     height: 2.5rem; /* Even smaller on mobile */
+    box-sizing: border-box;
   }
 
   .nav-links {
@@ -451,8 +468,10 @@ body {
 
 @media (max-width: 480px) {
   .nav-container {
+    width: 100%;
     height: 2.25rem;
     padding: 0 0.75rem; /* Reduced padding for very small screens */
+    box-sizing: border-box;
   }
 
   .logo {
@@ -464,10 +483,15 @@ body {
   }
 }
 
-/* Additional constraint for very wide screens */
-@media (min-width: 1400px) {
+@media (max-width: 400px) {
   .nav-container {
-    width: 1200px; /* Maintain fixed width even on very wide screens */
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 0.5rem; /* Further reduced padding */
+    margin: 0;
+  }
+  .header {
+    padding: 0;
   }
 }
 
@@ -488,7 +512,8 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: min(1200px, 100vw);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
