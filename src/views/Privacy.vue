@@ -2,13 +2,14 @@
   <div class="privacy">
     <div class="page-header">
       <div class="container">
-        <div class="header-content" ref="headerContent">
-          <h1 class="page-title">Privacy Policy</h1>
+        <div class="header-content">
+          <h1 class="page-title">Politica de confidențialitate</h1>
           <p class="page-subtitle">
-            Your privacy matters to us. Learn how we collect, use, and protect your information.
+            Confidențialitatea ta este importantă pentru noi. Află cum colectăm,
+            utilizăm și protejăm datele tale.
           </p>
           <div class="last-updated">
-            <span class="update-label">Last updated:</span>
+            <span class="update-label">Ultima actualizare:</span>
             <span class="update-date">{{ lastUpdated }}</span>
           </div>
         </div>
@@ -18,14 +19,18 @@
     <div class="page-content">
       <div class="container">
         <div class="content-wrapper">
-          <!-- Table of Contents -->
-          <aside class="toc" ref="toc">
-            <h3 class="toc-title">Table of Contents</h3>
+          <!-- Cuprins -->
+          <aside class="toc">
+            <h3 class="toc-title">Cuprins</h3>
             <nav class="toc-nav">
               <ul class="toc-list">
-                <li class="toc-item" v-for="section in sections" :key="section.id">
-                  <a 
-                    :href="`#${section.id}`" 
+                <li
+                  class="toc-item"
+                  v-for="section in sections"
+                  :key="section.id"
+                >
+                  <a
+                    :href="`#${section.id}`"
                     class="toc-link"
                     @click.prevent="scrollToSection(section.id)"
                   >
@@ -36,32 +41,40 @@
             </nav>
           </aside>
 
-          <!-- Main Content -->
-          <main class="content" ref="content">
-            <section 
-              v-for="section in sections" 
+          <!-- Conținut principal -->
+          <main class="content">
+            <section
+              v-for="section in sections"
               :key="section.id"
               :id="section.id"
               class="content-section"
-              :ref="`section-${section.id}`"
             >
               <h2 class="section-heading">{{ section.title }}</h2>
               <div class="section-content" v-html="section.content"></div>
             </section>
 
-            <!-- Contact Section -->
-            <section class="contact-section" ref="contactSection">
+            <!-- Contact -->
+            <section id="contact" class="contact-section">
               <div class="contact-card">
-                <h2 class="contact-title">Questions About Privacy?</h2>
+                <h2 class="contact-title">
+                  Întrebări legate de confidențialitate?
+                </h2>
                 <p class="contact-description">
-                  If you have any questions about this Privacy Policy, please contact us.
+                  Dacă ai nelămuriri legate de această Politică de
+                  confidențialitate, ne poți contacta:
                 </p>
                 <div class="contact-info">
                   <div class="contact-item">
-                    <strong>Email:</strong> privacy@example.com
+                    <strong>Email:</strong> office@cermind.ro
                   </div>
                   <div class="contact-item">
-                    <strong>Address:</strong> 123 Privacy Street, Data City, DC 12345
+                    <strong>Adresă:</strong>București, România
+                  </div>
+                  <div class="contact-item">
+                    <strong>Telefon:</strong> +40 755 570 090
+                  </div>
+                  <div class="contact-item">
+                    <strong>CUI:</strong> 
                   </div>
                 </div>
               </div>
@@ -75,106 +88,182 @@
 
 <script>
 export default {
-  name: 'Privacy',
+  name: "Privacy",
   data() {
     return {
-      lastUpdated: 'January 15, 2024',
-      observer: null,
+      lastUpdated: "19 august 2025",
       sections: [
         {
-          id: 'information-collection',
-          title: 'Information We Collect',
+          id: "introducere",
+          title: "1. Introducere",
           content: `
-            <p>We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support.</p>
-            <ul>
-              <li><strong>Personal Information:</strong> Name, email address, phone number, and billing information</li>
-              <li><strong>Usage Data:</strong> Information about how you interact with our services</li>
-              <li><strong>Device Information:</strong> IP address, browser type, and device characteristics</li>
-            </ul>
-          `
+            <p>Această Politică de confidențialitate explică modul în care <strong>Cermind</strong> ("Operatorul") tratează datele personale în cadrul aplicației desktop <strong>Cermate</strong> ("Aplicația").</p>
+            <p>Respectăm Regulamentul (UE) 2016/679 (GDPR), Legea nr. 190/2018 și Politicile Google API Services User Data Policy.</p>
+          `,
         },
         {
-          id: 'information-use',
-          title: 'How We Use Your Information',
+          id: "date-colectate",
+          title: "2. Ce date colectăm",
           content: `
-            <p>We use the information we collect to provide, maintain, and improve our services. Specifically, we may use your information to:</p>
             <ul>
-              <li>Process transactions and send related information</li>
-              <li>Send you technical notices, updates, security alerts, and support messages</li>
-              <li>Respond to your comments, questions, and customer service requests</li>
-              <li>Monitor and analyze trends, usage, and activities in connection with our services</li>
-              <li>Personalize and improve our services and provide content or features that match your interests</li>
+              <li><strong>Adresa MAC</strong> – folosită exclusiv pentru gestionarea licenței;</li>
+              <li><strong>Sistem de operare și versiune</strong> – pentru compatibilitate tehnică;</li>
+              <li><strong>Acces la Gmail și Google Drive prin OAuth</strong> – exclusiv pentru trimiterea de e-mailuri și gestionarea fișierelor PDF la cererea utilizatorului.</li>
             </ul>
-          `
+            <p>Nu stocăm conținutul e-mailurilor și nu copiem fișiere din Drive în alte locații decât cele alese de utilizator.</p>
+          `,
         },
         {
-          id: 'information-sharing',
-          title: 'Information Sharing and Disclosure',
+          id: "scopuri",
+          title: "3. Scopurile și temeiurile prelucrării",
           content: `
-            <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy:</p>
-            <ul>
-              <li><strong>Service Providers:</strong> We may share information with trusted service providers who assist us in operating our services</li>
-              <li><strong>Legal Requirements:</strong> We may disclose information if required by law or in response to valid legal requests</li>
-              <li><strong>Business Transfers:</strong> Information may be transferred in connection with a merger, acquisition, or sale of assets</li>
-            </ul>
-          `
+            <p>Datele sunt prelucrate strict pentru funcționarea aplicației, trimiterea e-mailurilor și gestionarea fișierelor PDF.</p>
+            <p><strong>Temei legal:</strong> executarea contractului (art. 6(1)(b) GDPR) și consimțământul acordat prin permisiunile OAuth (art. 6(1)(a) GDPR).</p>
+          `,
         },
         {
-          id: 'data-security',
-          title: 'Data Security',
+          id: "pastrare",
+          title: "4. Păstrarea datelor",
           content: `
-            <p>We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
-            <p>These measures include:</p>
-            <ul>
-              <li>Encryption of data in transit and at rest</li>
-              <li>Regular security assessments and updates</li>
-              <li>Access controls and authentication procedures</li>
-              <li>Employee training on data protection practices</li>
-            </ul>
-          `
+            <p>Nu păstrăm parole și nu colectăm conținut din Gmail/Drive. Token-urile OAuth 2.0 sunt stocate minim și în siguranță, și pot fi revocate oricând din <a href="https://myaccount.google.com/permissions" target="_blank">setările Google</a>.</p>
+            <p>Datele tehnice (MAC, OS) sunt păstrate doar pe durata relației contractuale.</p>
+          `,
         },
         {
-          id: 'cookies',
-          title: 'Cookies and Tracking Technologies',
+          id: "destinatari",
+          title: "5. Destinatari și transferuri",
           content: `
-            <p>We use cookies and similar tracking technologies to collect and use personal information about you. These technologies help us:</p>
-            <ul>
-              <li>Remember your preferences and settings</li>
-              <li>Understand how you use our services</li>
-              <li>Improve our services and user experience</li>
-            </ul>
-            <p>You can control cookies through your browser settings, but please note that disabling cookies may affect the functionality of our services.</p>
-          `
+            <p>Accesul este limitat la personal autorizat și furnizori tehnici. Nu transferăm date în afara SEE fără garanții GDPR adecvate.</p>
+          `,
         },
         {
-          id: 'your-rights',
-          title: 'Your Rights and Choices',
+          id: "drepturi",
+          title: "6. Drepturile utilizatorului",
           content: `
-            <p>Depending on your location, you may have certain rights regarding your personal information:</p>
             <ul>
-              <li><strong>Access:</strong> Request access to your personal information</li>
-              <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
-              <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-              <li><strong>Portability:</strong> Request a copy of your information in a structured format</li>
-              <li><strong>Opt-out:</strong> Opt out of certain uses and disclosures of your information</li>
+              <li>Drept de acces, rectificare și ștergere;</li>
+              <li>Drept de restricționare și opoziție;</li>
+              <li>Drept la portabilitate (unde e aplicabil);</li>
+              <li>Dreptul de a retrage consimțământul pentru Gmail/Drive prin contul Google;</li>
+              <li>Dreptul de a depune plângere la ANSPDCP.</li>
             </ul>
-          `
+          `,
         },
         {
-          id: 'policy-changes',
-          title: 'Changes to This Policy',
+          id: "securitate",
+          title: "7. Securitate",
           content: `
-            <p>We may update this Privacy Policy from time to time. When we make changes, we will notify you by:</p>
-            <ul>
-              <li>Posting the updated policy on this page</li>
-              <li>Updating the "Last updated" date at the top of this policy</li>
-              <li>Sending you an email notification for significant changes (if you have provided your email address)</li>
-            </ul>
-            <p>We encourage you to review this Privacy Policy periodically to stay informed about how we are protecting your information.</p>
-          `
-        }
-      ]
+            <p>Aplicăm măsuri tehnice și organizatorice adecvate: OAuth 2.0, control de acces, criptare și politici de minimizare a datelor.</p>
+          `,
+        },
+        {
+          id: "google",
+          title: "8. Politici Google",
+          content: `
+            <p>Aplicația respectă Google API Services User Data Policy (inclusiv Limited Use). Sunt solicitate doar permisiunile strict necesare pentru funcționalitatea aplicației.</p>
+          `,
+        },
+        {
+          id: "modificari",
+          title: "9. Modificări",
+          content: `
+            <p>Putem actualiza această Politică. Versiunea curentă va fi afișată pe site, cu data ultimei actualizări. Modificările importante vor fi comunicate utilizatorilor.</p>
+          `,
+        },
+      ],
+    };
+  },
+  methods: {
+    scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
       }
-  }
+    },
+  },
+};
+</script>
+<style scoped>
+
+.page-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
 }
-  </script>
+
+.page-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--primary-color);
+  font-weight: 300;
+}
+
+.last-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: rgba(194, 165, 133, 0.1);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 2rem;
+  font-size: var(--font-size-sm);
+}
+
+.toc-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.toc-link {
+  color: #dbdfe6; /* albastru intens */
+  text-decoration: none;
+  font-weight: 500;
+  background-color: rgb(0, 0, 0, 0);
+  transition: color 0.6s ease, text-decoration 0.9s ease;
+}
+
+.link-s:hover,
+.link-s:focus {
+  color: #1d4ed8; /* albastru mai închis */
+  text-decoration: underline;
+}
+
+.link-s:active {
+  color: #1e40af; /* apăsat */
+}
+
+.link-s:visited {
+  color: #4f46e5; /* mov ușor diferit pentru link vizitat */
+}
+:deep(.content-section a) {
+  color: #dbdfe6;
+  font-weight: 500;
+}
+
+:deep(.content-section a:hover) {
+  color: #f7f7f7; /* albastru mai închis */
+  text-decoration: underline;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.privacy {
+  min-height: 100vh;
+}
+
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
+  padding: var(--space-xxl) 0 var(--space-xl);
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 35px 35px 35px 35px
+}
+
+.header-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 15cm;
+}
+
+</style>

@@ -259,6 +259,7 @@ export default {
   background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
   padding: var(--space-xxl) 0 var(--space-xl);
   border-bottom: 1px solid var(--border-color);
+  border-radius: 35px 35px 35px 35px
 }
 
 .header-content {
