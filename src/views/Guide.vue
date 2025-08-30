@@ -389,6 +389,7 @@ export default {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: white;
   padding: var(--space-xxl) 0;
+  border-radius: 25px 25px 25px 25px;
 }
 
 .header-content {
@@ -398,6 +399,7 @@ export default {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease;
+  
 }
 
 .header-content.animate-in {

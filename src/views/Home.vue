@@ -57,7 +57,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta section" ref="ctaSection">
+    <section class="cta-section" ref="ctaSection">
       <div class="container">
         <div class="cta-content">
           <h2 class="cta-title">Ești pregătit să începi?</h2>
@@ -432,13 +432,16 @@ export default {
 }
 
 /* CTA Section */
-.cta {
+.cta-section {
   background: linear-gradient(
     135deg,
     var(--primary-color) 0%,
     var(--primary-dark) 100%
   );
-  border-radius: (25px 25px 25px 25px);
+ border-radius: 25px 25px 25px 25px;
+  padding: var(--space-xxl) 0 var(--space-xl);
+  margin-top: var(--space-xxl);
+  position: relative;
 }
 
 .cta-content {
