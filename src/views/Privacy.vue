@@ -91,7 +91,7 @@ export default {
   name: "Privacy",
   data() {
     return {
-      lastUpdated: "19 august 2025",
+      lastUpdated: "19 August 2025",
       sections: [
         {
           id: "introducere",
@@ -221,6 +221,9 @@ export default {
   font-weight: 500;
   background-color: rgb(0, 0, 0, 0);
   transition: color 0.6s ease, text-decoration 0.9s ease;
+}
+.toc-link:hover {
+  text-decoration: underline;
 }
 
 .link-s:hover,

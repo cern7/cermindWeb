@@ -20,12 +20,16 @@
         <div class="content-wrapper">
           <!-- Table of Contents -->
           <aside class="toc" ref="toc">
-            <h3 class="toc-title">Terms Overview</h3>
+            <h3 class="toc-title">Termeni și Condiții</h3>
             <nav class="toc-nav">
               <ul class="toc-list">
-                <li class="toc-item" v-for="section in sections" :key="section.id">
-                  <a 
-                    :href="`#${section.id}`" 
+                <li
+                  class="toc-item"
+                  v-for="section in sections"
+                  :key="section.id"
+                >
+                  <a
+                    :href="`#${section.id}`"
                     class="toc-link"
                     @click.prevent="scrollToSection(section.id)"
                   >
@@ -38,8 +42,8 @@
 
           <!-- Main Content -->
           <main class="content" ref="content">
-            <section 
-              v-for="section in sections" 
+            <section
+              v-for="section in sections"
               :key="section.id"
               :id="section.id"
               class="content-section"
@@ -52,14 +56,17 @@
             <!-- Agreement Section -->
             <section class="agreement-section" ref="agreementSection">
               <div class="agreement-card">
-                <h2 class="agreement-title">Agreement to Terms</h2>
+                <h2 class="agreement-title">
+                  Acord privind termenii și condițiile
+                </h2>
                 <p class="agreement-description">
-                  By accessing and using our services, you acknowledge that you have read, 
-                  understood, and agree to be bound by these Terms of Service.
+                  Prin accesarea și utilizarea serviciilor noastre, confirmați
+                  că ați citit, ați înțeles și sunteți de acord să respectați
+                  acești Termeni și condiții de utilizare.
                 </p>
                 <div class="agreement-actions">
                   <router-link to="/" class="btn btn-primary">
-                    Return to Home
+                    <House />
                   </router-link>
                 </div>
               </div>
@@ -72,116 +79,112 @@
 </template>
 
 <script>
+import { House } from "lucide-vue-next";
 export default {
-  name: 'Terms',
+  components: {
+    House,
+  },
+
+  name: "Terms",
   data() {
     return {
-      lastUpdated: 'August 8, 2025',
+      lastUpdated: "19 August, 2025",
       observer: null,
       sections: [
         {
-          id: 'acceptance',
-          title: 'Acceptance of Terms',
+          id: "introduction",
+          title: "Introducere",
           content: `
-            <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
-            <p>These Terms of Service ("Terms") govern your use of our website and services. If you disagree with any part of these terms, then you may not access our services.</p>
-            <p>We reserve the right to update and change the Terms by posting updates and changes to our website.</p>
-          `
+            <p>Acești Termeni și Condiții reglementează utilizarea aplicației software Cermate (denumită în continuare „Aplicația”), furnizată de către Cermind.</p>
+            <p>Prin instalarea și utilizarea Aplicației, utilizatorul declară că a citit, a înțeles și acceptă integral acești Termeni și Condiții.</p>
+           `,
         },
         {
-          id: 'use-license',
-          title: 'Use License',
+          id: "application",
+          title: "Obiectul Aplicației",
           content: `
-            <p>Permission is granted to temporarily download one copy of the materials on our website for personal, non-commercial transitory viewing only.</p>
-            <p>This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+            <p>Aplicația permite utilizatorilor:</p>
             <ul>
-              <li>Modify or copy the materials</li>
-              <li>Use the materials for any commercial purpose or for any public display</li>
-              <li>Attempt to reverse engineer any software contained on the website</li>
-              <li>Remove any copyright or other proprietary notations from the materials</li>
+              <li>Să caute dosare utilizând API-ul public furnizat de Ministerul Justiției din România;</li>
+              <li>Să genereze documente PDF pe baza unor șabloane furnizate de utilizator;</li>
+              <li>Să trimită aceste documente prin email către instanțele de judecată sau alți destinatari, folosind integrarea cu serviciile Google (Gmail, Google Drive);</li>
+              <li>să salveze fișierele generate local pe dispozitiv și/sau în contul personal Google Drive.</li>
             </ul>
-            <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by us at any time.</p>
-          `
+          `,
         },
         {
-          id: 'user-accounts',
-          title: 'User Accounts',
+          id: "license",
+          title: "Licență de utilizare",
           content: `
-            <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times.</p>
-            <p>You are responsible for safeguarding the password and for all activities that occur under your account.</p>
-            <p>You agree not to disclose your password to any third party and to take sole responsibility for any activities or actions under your account.</p>
-            <p>We reserve the right to terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever.</p>
-          `
+          <p>Aplicația este pusă la dispoziție utilizatorului pe baza unei licențe limitate, neexclusive și netransferabile.</p>
+          <p>Licența este valabilă conform acordului încheiat între părți (client și furnizor).</p>
+          <p>Utilizatorul nu are dreptul să revândă, să distribuie sau să modifice Aplicația.</p>
+          `,
         },
         {
-          id: 'prohibited-uses',
-          title: 'Prohibited Uses',
+          id: "oauth-google",
+          title: "Autentificare și integrare Google",
           content: `
-            <p>You may not use our service:</p>
+            <p>Aplicația utilizează serviciul Google OAuth pentru autentificare. Utilizatorul trebuie să își ofere consimțământul pentru următoarele permisiuni:</p>
             <ul>
-              <li>For any unlawful purpose or to solicit others to perform unlawful acts</li>
-              <li>To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances</li>
-              <li>To infringe upon or violate our intellectual property rights or the intellectual property rights of others</li>
-              <li>To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate</li>
-              <li>To submit false or misleading information</li>
-              <li>To upload or transmit viruses or any other type of malicious code</li>
-              <li>To spam, phish, pharm, pretext, spider, crawl, or scrape</li>
-              <li>For any obscene or immoral purpose</li>
+              <li>Acces la fișierele create de Aplicație în Google Drive;</li>
+              <li>Posibilitatea de a redacta și trimite emailuri prin Gmail.</li>
             </ul>
-          `
+            <br>
+            <p>Aplicația respectă Google API Services User Data Policy, inclusiv cerințele privind Limited Use.</p>
+          `,
         },
         {
-          id: 'content-policy',
-          title: 'Content Policy',
+          id: "gdpr",
+          title: "Date colectate și protecția datelor personale",
           content: `
-            <p>Our service allows you to post, link, store, share and otherwise make available certain information, text, graphics, or other material ("Content").</p>
-            <p>You are responsible for Content that you post to the service, including its legality, reliability, and appropriateness.</p>
-            <p>By posting Content to the service, you grant us the right and license to use, modify, publicly perform, publicly display, reproduce, and distribute such Content.</p>
-            <p>We reserve the right to terminate your access to the service if you violate our content policies.</p>
-          `
-        },
-        {
-          id: 'privacy-policy',
-          title: 'Privacy Policy',
-          content: `
-            <p>Your privacy is important to us. Please review our Privacy Policy, which also governs your use of the service.</p>
-            <p>By using our service, you agree to the collection and use of information in accordance with our Privacy Policy.</p>
-            <p>We are committed to protecting your personal information and your right to privacy.</p>
-          `
-        },
-        {
-          id: 'termination',
-          title: 'Termination',
-          content: `
-            <p>We may terminate or suspend your account and bar access to the service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever.</p>
-            <p>If you wish to terminate your account, you may simply discontinue using the service.</p>
-            <p>All provisions of the Terms which by their nature should survive termination shall survive termination.</p>
-          `
-        },
-        {
-          id: 'disclaimer',
-          title: 'Disclaimer',
-          content: `
-            <p>The information on this website is provided on an "as is" basis. To the fullest extent permitted by law, this Company:</p>
+            <p>Aplicația respectă legislația națională și europeană privind protecția datelor (GDPR).</p>
             <ul>
-              <li>Excludes all representations and warranties relating to this website and its contents</li>
-              <li>Does not warrant that the functions contained in this website will be uninterrupted or error-free</li>
-              <li>Does not warrant that defects will be corrected, or that this website or the server that makes it available are free of viruses or bugs</li>
+              <li>Date colectate: adresa MAC (salvată doar într-o formă mascată, neidentificabilă) și tipul sistemului de operare.</li>
+              <li>Datele de autentificare Google și token-urile de acces sunt stocate doar local pe dispozitivul utilizatorului. Furnizorul nu are acces la aceste date și nu le stochează pe servere proprii.</li>
+              <li>Documentele PDF și emailurile generate rămân în exclusivitate la utilizator (local și în contul Google).</li>
             </ul>
-            <p>Nothing in this website disclaimer will exclude or limit any warranty implied by law that it would be unlawful to exclude or limit.</p>
-          `
+           <br>
+            <p>Utilizatorul are drepturile prevăzute de GDPR: acces, rectificare, ștergere, opoziție și portabilitate.</p>
+          `,
         },
         {
-          id: 'governing-law',
-          title: 'Governing Law',
+          id: "responsibility-limitations",
+          title: "Limitarea răspunderii",
           content: `
-            <p>These Terms shall be interpreted and governed by the laws of the State, without regard to its conflict of law provisions.</p>
-            <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights.</p>
-            <p>If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions will remain in effect.</p>
-          `
-        }
-      ]
-    }
+            <p>Furnizorul nu garantează:</p>
+            <ul>
+              <li>Funcționarea continuă sau fără erori a API-ului Ministerului Justiției;</li>
+              <li>Disponibilitatea serviciilor Google (Drive, Gmail);</li>
+              <li>Că Aplicația este lipsită de erori sau compatibilă cu toate sistemele.</li>
+            </ul>
+            <br>
+            <p>Furnizorul nu este responsabil pentru:</p>
+            <ul>
+              <li>pierderea de date cauzată de utilizator;</li>
+              <li>folosirea Aplicației în scopuri ilegale;</li>
+              <li>eventualele daune directe sau indirecte rezultate din utilizarea Aplicației.</li>
+            </ul>
+            `,
+        },
+        {
+          id: "termination",
+          title: "Încetarea utilizării",
+          content: `
+            <p>Licența poate fi reziliată de către furnizor în cazul nerespectării Termenilor și Condițiilor.</p>
+            <p>La încetarea utilizării, utilizatorul trebuie să dezinstaleze Aplicația și să șteargă eventualele copii.</p>
+          `,
+        },
+        {
+          id: "governing-law",
+          title: "Legislație aplicabilă",
+          content: `
+            <p>Acești Termeni și Condiții sunt guvernați de legislația în vigoare în România și de reglementările Uniunii Europene.</p>
+            <p>Orice litigiu va fi soluționat de instanțele competente din România.</p>
+            `,
+        },
+      ],
+    };
   },
   methods: {
     scrollToSection(sectionId) {
@@ -189,26 +192,30 @@ export default {
       if (element) {
         const headerOffset = 100;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     },
-    
+
     initScrollAnimations() {
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-in");
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
 
       // Observe elements for animation
       const animateElements = [
@@ -217,36 +224,36 @@ export default {
         this.$refs.content,
         this.$refs.agreementSection,
         ...Object.keys(this.$refs)
-          .filter(key => key.startsWith('section-'))
-          .map(key => this.$refs[key])
-          .flat()
+          .filter((key) => key.startsWith("section-"))
+          .map((key) => this.$refs[key])
+          .flat(),
       ];
 
-      animateElements.forEach(el => {
+      animateElements.forEach((el) => {
         if (el) {
           this.observer.observe(el);
         }
       });
-    }
+    },
   },
-  
+
   mounted() {
     this.initScrollAnimations();
-    
+
     // Initial animation
     this.$nextTick(() => {
       if (this.$refs.headerContent) {
-        this.$refs.headerContent.classList.add('animate-in');
+        this.$refs.headerContent.classList.add("animate-in");
       }
     });
   },
-  
+
   beforeUnmount() {
     if (this.observer) {
       this.observer.disconnect();
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -256,10 +263,14 @@ export default {
 
 /* Page Header */
 .page-header {
-  background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--background) 0%,
+    var(--background-secondary) 100%
+  );
   padding: var(--space-xxl) 0 var(--space-xl);
   border-bottom: 1px solid var(--border-color);
-  border-radius: 25px 25px 25px 25px
+  border-radius: 25px 25px 25px 25px;
 }
 
 .header-content {
@@ -407,7 +418,7 @@ export default {
 }
 
 .section-heading::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -458,7 +469,11 @@ export default {
 }
 
 .agreement-card {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
   color: white;
   border-radius: 1rem;
   padding: var(--space-xxl);
