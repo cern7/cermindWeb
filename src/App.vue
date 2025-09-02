@@ -120,13 +120,14 @@ export default {
 <style>
 /* CSS Custom Properties for Design System */
 :root {
-  --logo-color-primary: #002540;
-  --logo-color-secondary: #0070f7;
+  --logo-color-primary: #401CAF;
+  --logo-color-secondary: #4026A0;
   --primary-color: #251b10;
   --primary-light: #d4b896;
   --primary-dark: #a08b6f;
   --text-primary: #2c2c2c;
   --text-secondary: #2f2c2c;
+  --header-link-color: #452799;
   --text-light: #ffffff;
   --background: #544e4e;
   --background-secondary: #f8f8f8;
@@ -362,7 +363,7 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: var(--text-secondary);
+  color: var(--header-link-color);
   font-weight: 500;
   padding: var(--space-xs) clamp(0.5rem, 1.5vw, 1rem); /* Responsive padding */
   border-radius: 0.5rem;

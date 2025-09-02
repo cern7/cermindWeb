@@ -135,6 +135,58 @@ export default {
           `,
         },
         {
+          id: "google-apis",
+          title: "Limite privind utilizarea serviciilor Gmail și Google Drive",
+          content: `
+            <ol>
+              <li>
+                Serviciile noastre utilizează API-urile Gmail și Google Drive, care sunt
+                furnizate de Google LLC.
+              </li>
+              <li>
+                Utilizarea serviciilor este supusă limitărilor impuse de Google, inclusiv,
+                dar fără a se limita la:
+              </li>
+              <ul>
+                <li>
+                  Stocare Drive: Fiecare cont are o limită de stocare totală disponibilă,
+                  conform planului Google asociat. Depășirea acestei limite poate împiedica
+                  încărcarea sau sincronizarea fișierelor.
+                  <a
+                    href="https://support.google.com/drive/answer/2375123"
+                    target="_blank"
+                    rel="noopener"
+                    >Detalii Google Drive</a
+                  >
+                </li>
+                <li>
+                  Număr de email-uri: Gmail impune limite privind numărul de email-uri
+                  trimise și primite pe zi. Depășirea acestor limite poate duce la blocarea
+                  temporară a trimiterei de email-uri.
+                  <a
+                    href="https://support.google.com/mail/answer/22839"
+                    target="_blank"
+                    rel="noopener"
+                    >Detalii Gmail</a
+                  >
+                </li>
+              </ul>
+              <li>
+                Noi nu putem garanta disponibilitatea serviciilor dacă aceste limite sunt
+                atinse. Orice problemă cauzată de depășirea limitelor Google nu poate fi
+                atribuită site-ului nostru.
+              </li>
+              <li>
+                Utilizatorii sunt responsabili să respecte limitele și termenii de utilizare
+                Google, precum și să gestioneze conturile proprii pentru a evita
+                întreruperile de serviciu.
+              </li>
+            </ol>
+
+  `,
+        },
+
+        {
           id: "gdpr",
           title: "Date colectate și protecția datelor personale",
           content: `
@@ -161,9 +213,9 @@ export default {
             <br>
             <p>Furnizorul nu este responsabil pentru:</p>
             <ul>
-              <li>pierderea de date cauzată de utilizator;</li>
-              <li>folosirea Aplicației în scopuri ilegale;</li>
-              <li>eventualele daune directe sau indirecte rezultate din utilizarea Aplicației.</li>
+              <li>Pierderea de date cauzată de utilizator;</li>
+              <li>Folosirea Aplicației în scopuri ilegale;</li>
+              <li>Eventualele daune directe sau indirecte rezultate din utilizarea Aplicației.</li>
             </ul>
             `,
         },

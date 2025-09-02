@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/views/Home.vue";
-import Privacy from "@/views/Privacy.vue";
-import Terms from "@/views/Terms.vue";
-import Guide from "@/views/Guide.vue";
-import Contact from "@/views/Contact.vue";
+const Home = () => import("@/views/Home.vue");
+const Privacy = () => import("@/views/Privacy.vue");
+const Terms = () => import("@/views/Terms.vue");
+const Guide = () => import("@/views/Guide.vue");
+const Contact = () => import("@/views/Contact.vue");
 
 const routes = [
   {

@@ -3,22 +3,23 @@
     <div class="page-header">
       <div class="container">
         <div class="header-content" ref="headerContent">
-          <h1 class="page-title">Getting Started Guide</h1>
+          <h1 class="page-title">Ghid introductiv</h1>
           <p class="page-subtitle">
-            Everything you need to know to make the most of our platform
+            Tot ce trebuie să știi pentru a profita la maximum de aplicatia
+            noastră
           </p>
           <div class="guide-stats">
             <div class="stat-item">
               <span class="stat-number">{{ steps.length }}</span>
-              <span class="stat-label">Steps</span>
+              <span class="stat-label">Pași</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">5</span>
-              <span class="stat-label">Minutes</span>
+              <span class="stat-label">Minute</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">Easy</span>
-              <span class="stat-label">Difficulty</span>
+              <span class="stat-number">Ușor</span>
+              <span class="stat-label">Dificultate</span>
             </div>
           </div>
         </div>
@@ -31,31 +32,30 @@
           <!-- Progress Sidebar -->
           <aside class="progress-sidebar" ref="sidebar">
             <div class="progress-header">
-              <h3 class="progress-title">Your Progress</h3>
+              <h3 class="progress-title">Progres</h3>
               <div class="progress-bar">
-                <div 
-                  class="progress-fill" 
+                <div
+                  class="progress-fill"
                   :style="{ width: progressPercentage + '%' }"
                 ></div>
               </div>
-              <span class="progress-text">{{ completedSteps }} of {{ steps.length }} completed</span>
+              <span class="progress-text"
+                >{{ completedSteps }} of {{ steps.length }} finalizati</span
+              >
             </div>
 
             <nav class="step-nav">
               <ul class="step-list">
-                <li 
-                  v-for="(step, index) in steps" 
+                <li
+                  v-for="(step, index) in steps"
                   :key="index"
                   class="step-nav-item"
-                  :class="{ 
-                    'completed': step.completed, 
-                    'active': currentStep === index 
+                  :class="{
+                    completed: step.completed,
+                    active: currentStep === index,
                   }"
                 >
-                  <button 
-                    class="step-nav-button"
-                    @click="scrollToStep(index)"
-                  >
+                  <button class="step-nav-button" @click="scrollToStep(index)">
                     <div class="step-number">
                       <CheckCircle v-if="step.completed" :size="16" />
                       <span v-else>{{ index + 1 }}</span>
@@ -74,10 +74,11 @@
                 <div class="intro-icon">
                   <BookOpen :size="48" />
                 </div>
-                <h2 class="intro-title">Welcome to Your Journey</h2>
+                <h2 class="intro-title">Ghid Cermate</h2>
                 <p class="intro-description">
-                  This comprehensive guide will walk you through everything you need to know. 
-                  Follow along at your own pace and check off steps as you complete them.
+                  Acest ghid complet vă va prezenta tot ce trebuie să știți.
+                  Urmăriți pașii în ritmul propriu și bifați pașii pe măsură ce
+                  îi finalizați.
                 </p>
                 <button class="btn btn-primary" @click="scrollToStep(0)">
                   Start Guide
@@ -86,8 +87,8 @@
             </div>
 
             <div class="steps-container">
-              <section 
-                v-for="(step, index) in steps" 
+              <section
+                v-for="(step, index) in steps"
                 :key="index"
                 :id="`step-${index}`"
                 class="step-section"
@@ -96,33 +97,54 @@
                 <div class="step-card">
                   <div class="step-header">
                     <div class="step-indicator">
-                      <div 
+                      <div
                         class="step-circle"
-                        :class="{ 'completed': step.completed }"
+                        :class="{ completed: step.completed }"
                       >
                         <CheckCircle v-if="step.completed" :size="24" />
                         <span v-else class="step-number">{{ index + 1 }}</span>
                       </div>
-                      <div class="step-line" v-if="index < steps.length - 1"></div>
+                      <div
+                        class="step-line"
+                        v-if="index < steps.length - 1"
+                      ></div>
                     </div>
-                    
+
                     <div class="step-info">
                       <h3 class="step-title">{{ step.title }}</h3>
                       <p class="step-description">{{ step.description }}</p>
                     </div>
+                    <div class="step-thumbnails">
+                      <img
+                        v-for="(img, idx) in step.image"
+                        :key="idx"
+                        :src="img"
+                        alt="Thumbnail"
+                        class="step-thumb"
+                        @click="openImage(img, index)"
+                      />
+                    </div>
+                  </div>
+
+                  <div
+                    id="`lightbox-${index}`"
+                    class="lightbox"
+                    @click="closeImage($event, index)"
+                  >
+                    <img id="`lightbox-img-${index}`" src="" alt="Full View" />
                   </div>
 
                   <div class="step-content" v-html="step.content"></div>
 
                   <div class="step-actions">
-                    <button 
+                    <button
                       class="btn btn-outline mark-complete-btn"
-                      :class="{ 'completed': step.completed }"
+                      :class="{ completed: step.completed }"
                       @click="toggleStepCompletion(index)"
                     >
                       <CheckCircle v-if="step.completed" :size="18" />
                       <Circle v-else :size="18" />
-                      {{ step.completed ? 'Completed' : 'Mark as Complete' }}
+                      {{ step.completed ? "Completed" : "Mark as Complete" }}
                     </button>
                   </div>
                 </div>
@@ -130,14 +152,18 @@
             </div>
 
             <!-- Completion Section -->
-            <section class="completion-section" ref="completionSection" v-if="allStepsCompleted">
+            <section
+              class="completion-section"
+              ref="completionSection"
+              v-if="allStepsCompleted"
+            >
               <div class="completion-card">
                 <div class="completion-icon">
                   <Trophy :size="64" />
                 </div>
                 <h2 class="completion-title">Congratulations! 🎉</h2>
                 <p class="completion-description">
-                  You've successfully completed all the steps in this guide. 
+                  You've successfully completed all the steps in this guide.
                   You're now ready to make the most of our platform.
                 </p>
                 <div class="completion-actions">
@@ -158,15 +184,18 @@
 </template>
 
 <script>
-import { BookOpen, CheckCircle, Circle, Trophy } from 'lucide-vue-next'
+import { BookOpen, CheckCircle, Circle, Trophy } from "lucide-vue-next";
+import licenseImg from "@/assets/licenseLoad.png";
+import auth1 from "@/assets/auth1.png";
+import auth2 from "@/assets/auth2.png";
 
 export default {
-  name: 'Guide',
+  name: "Guide",
   components: {
     BookOpen,
     CheckCircle,
     Circle,
-    Trophy
+    Trophy,
   },
   data() {
     return {
@@ -174,45 +203,42 @@ export default {
       observer: null,
       steps: [
         {
-          title: 'Create Your Account',
-          description: 'Set up your personal account to get started',
+          title: "Adaugă Licența",
+          description: "Încarcă și verifică licența in aplicație",
           completed: false,
           content: `
             <div class="step-details">
-              <p>Creating an account is the first step to accessing all our features. Here's what you'll need:</p>
-              <ul>
-                <li>A valid email address</li>
-                <li>A secure password (at least 8 characters)</li>
-                <li>Basic profile information</li>
-              </ul>
-              <div class="step-tip">
-                <strong>Tip:</strong> Use a strong password that includes numbers, letters, and special characters.
-              </div>
+              <p>Pentru a folosi toate funcționalitățile aplicației, trebuie să încarci licența. Urmează pașii de mai jos:</p>
+              <ol>
+                <li>Pornește aplicația Cermate pe desktop.</li>
+                <li>Copiază și însereză licența primită pe email.</li>
+                <li>Validează licența acționând butonul 'Validate Now'</li>
+              </ol>
             </div>
-          `
+          `,
+          image: [licenseImg],
         },
         {
-          title: 'Verify Your Email',
-          description: 'Confirm your email address to secure your account',
+          title: "Autentificare Google",
+          description: "Conectează-ți contul Google pentru a începe",
           completed: false,
           content: `
             <div class="step-details">
-              <p>After creating your account, you'll receive a verification email. Follow these steps:</p>
+              <p>Autentificarea Google este primul pas pentru a accesa toate funcționalitățile aplicației. Vei avea nevoie de:</p>
               <ol>
-                <li>Check your inbox (and spam folder) for our verification email</li>
-                <li>Click the verification link in the email</li>
-                <li>You'll be redirected back to our platform</li>
-                <li>Your account is now verified and ready to use</li>
+                <li>Un cont Google valid</li>
+                <li>Permisiunea de acces la Gmail și Google Drive (OAuth)</li>
               </ol>
               <div class="step-tip">
-                <strong>Note:</strong> The verification link expires in 24 hours. Request a new one if needed.
-              </div>
+                <strong>Notă:</strong> Aceste permisiuni sunt folosite exclusiv pentru trimiterea e-mailurilor și gestionarea fișierelor PDF în aplicație.
+                </div>
             </div>
-          `
+          `,
+          image: [auth1, auth2],
         },
         {
-          title: 'Complete Your Profile',
-          description: 'Add personal information to customize your experience',
+          title: "Complete Your Profile",
+          description: "Add personal information to customize your experience",
           completed: false,
           content: `
             <div class="step-details">
@@ -227,11 +253,13 @@ export default {
                 <strong>Privacy:</strong> You control what information is visible to others. Review your privacy settings anytime.
               </div>
             </div>
-          `
+          `,
+          image: [],
         },
         {
-          title: 'Explore Key Features',
-          description: 'Discover the main features that make our platform powerful',
+          title: "Explore Key Features",
+          description:
+            "Discover the main features that make our platform powerful",
           completed: false,
           content: `
             <div class="step-details">
@@ -246,11 +274,12 @@ export default {
                 <strong>Tip:</strong> Use keyboard shortcuts to navigate faster. Press '?' to see all available shortcuts.
               </div>
             </div>
-          `
+          `,
+          image: [],
         },
         {
-          title: 'Connect & Collaborate',
-          description: 'Learn how to work with others on the platform',
+          title: "Connect & Collaborate",
+          description: "Learn how to work with others on the platform",
           completed: false,
           content: `
             <div class="step-details">
@@ -265,21 +294,22 @@ export default {
                 <strong>Best Practice:</strong> Set clear permissions when sharing to maintain security while enabling collaboration.
               </div>
             </div>
-          `
-        }
-      ]
-    }
+          `,
+          image: [],
+        },
+      ],
+    };
   },
   computed: {
     completedSteps() {
-      return this.steps.filter(step => step.completed).length;
+      return this.steps.filter((step) => step.completed).length;
     },
     progressPercentage() {
       return Math.round((this.completedSteps / this.steps.length) * 100);
     },
     allStepsCompleted() {
       return this.completedSteps === this.steps.length;
-    }
+    },
   },
   methods: {
     scrollToStep(stepIndex) {
@@ -287,56 +317,53 @@ export default {
       if (element) {
         const headerOffset = 120;
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
 
         window.scrollTo({
           top: offsetPosition,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     },
-    
+
     toggleStepCompletion(stepIndex) {
       this.steps[stepIndex].completed = !this.steps[stepIndex].completed;
       this.saveProgress();
     },
-    
+
     resetProgress() {
-      this.steps.forEach(step => {
+      this.steps.forEach((step) => {
         step.completed = false;
       });
       this.saveProgress();
     },
-    
+
     saveProgress() {
       // In a real app, this would save to a backend or localStorage
       // For demo purposes, we'll just keep it in memory during the session
-      console.log('Progress saved:', this.progressPercentage + '%');
+      console.log("Progress saved:", this.progressPercentage + "%");
     },
-    
+
     loadProgress() {
       // In a real app, this would load from a backend or localStorage
       // For demo purposes, we'll start fresh each time
     },
-    
+
     initScrollAnimations() {
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-            
-            // Update current step based on visible step
-            const stepId = entry.target.id;
-            if (stepId && stepId.startsWith('step-')) {
-              const stepIndex = parseInt(stepId.replace('step-', ''));
-              this.currentStep = stepIndex;
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-in");
+              this.observer.unobserve(entry.target);
             }
-          }
-        });
-      }, {
-        threshold: 0.3,
-        rootMargin: '-120px 0px -50% 0px'
-      });
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
 
       // Observe elements for animation
       const animateElements = [
@@ -346,47 +373,82 @@ export default {
         this.$refs.introSection,
         this.$refs.completionSection,
         ...Object.keys(this.$refs)
-          .filter(key => key.startsWith('step-'))
-          .map(key => this.$refs[key])
-          .flat()
+          .filter((key) => key.startsWith("step-"))
+          .map((key) => this.$refs[key])
+          .flat(),
       ];
 
-      animateElements.forEach(el => {
+      animateElements.forEach((el) => {
         if (el) {
           this.observer.observe(el);
         }
       });
-    }
+    },
+
+    openImage(src, stepIndex) {
+      try {
+        const lightbox = document.getElementById(`lightbox-${stepIndex}`);
+        const lightboxImg = document.getElementById(
+          `lightbox-img-${stepIndex}`
+        );
+        if (lightbox && lightboxImg) {
+          lightboxImg.src = src;
+          lightbox.style.display = "flex";
+        }
+      } catch (e) {
+        console.error("Error loading image:", e);
+      }
+    },
+
+    closeImage(e, stepIndex) {
+      const lightbox = document.getElementById(`lightbox-${stepIndex}`);
+      if (e.target.id === `lightbox-${stepIndex}` || e.target.id === `lightbox-img-${stepIndex}`) {
+        lightbox.style.display = "none";
+      }
+    },
   },
-  
+
   mounted() {
     this.loadProgress();
     this.initScrollAnimations();
-    
+
     // Initial animation
     this.$nextTick(() => {
       if (this.$refs.headerContent) {
-        this.$refs.headerContent.classList.add('animate-in');
+        this.$refs.headerContent.classList.add("animate-in");
       }
     });
   },
-  
+
   beforeUnmount() {
     if (this.observer) {
       this.observer.disconnect();
     }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
+/* .step-section,
+.guide-content,
+.intro-section,
+.completion-section,
+.header-content {
+  opacity: 1 !important;
+  transform: none !important;
+} */
+
 .guide {
   min-height: 100vh;
 }
 
 /* Page Header */
 .page-header {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  );
   color: white;
   padding: var(--space-xxl) 0;
   border-radius: 25px 25px 25px 25px;
@@ -399,7 +461,6 @@ export default {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease;
-  
 }
 
 .header-content.animate-in {
@@ -496,7 +557,11 @@ export default {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--primary-light)
+  );
   border-radius: 4px;
   transition: width 0.5s ease;
 }
@@ -606,7 +671,11 @@ export default {
 .intro-icon {
   width: 5rem;
   height: 5rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-light)
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -632,7 +701,7 @@ export default {
 /* Step Sections */
 .step-section {
   margin-bottom: var(--space-xl);
-  opacity: 0;
+  opacity: 1;
   transform: translateY(20px);
   transition: all 0.6s ease;
 }
@@ -770,7 +839,11 @@ export default {
 }
 
 .completion-card {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
   color: white;
   border-radius: 1rem;
   padding: var(--space-xxl);
@@ -895,5 +968,38 @@ export default {
   .stat-number {
     font-size: var(--font-size-xl);
   }
+}
+
+.step-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.step-thumb:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox overlay */
+.lightbox {
+  display: none; /* ascuns la început */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 </style>
