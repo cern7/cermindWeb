@@ -127,11 +127,11 @@
                   </div>
 
                   <div
-                    id="`lightbox-${index}`"
+                    :id="`lightbox-${index}`"
                     class="lightbox"
                     @click="closeImage($event, index)"
                   >
-                    <img id="`lightbox-img-${index}`" src="" alt="Full View" />
+                    <img :id="`lightbox-img-${index}`" src="" alt="Full View" />
                   </div>
 
                   <div class="step-content" v-html="step.content"></div>
@@ -188,6 +188,13 @@ import { BookOpen, CheckCircle, Circle, Trophy } from "lucide-vue-next";
 import licenseImg from "@/assets/licenseLoad.png";
 import auth1 from "@/assets/auth1.png";
 import auth2 from "@/assets/auth2.png";
+import search1 from "@/assets/search1.png";
+import export1 from "@/assets/export1.png";
+import export2 from "@/assets/export2.png";
+import pdf1 from "@/assets/pdf1.png";
+import pdf2 from "@/assets/pdf2.png";
+import pdf3 from "@/assets/pdf3.png";
+import email1 from "@/assets/email1.png";
 
 export default {
   name: "Guide",
@@ -237,65 +244,60 @@ export default {
           image: [auth1, auth2],
         },
         {
-          title: "Complete Your Profile",
-          description: "Add personal information to customize your experience",
+          title: "Caută Dosare",
+          description: "Caută și selectează dosarele in functie de tribunal și intervalul de timp",
           completed: false,
           content: `
             <div class="step-details">
-              <p>Completing your profile helps us provide a better, more personalized experience:</p>
+              <p>Pentru a găsi dosarele necesare:</p>
               <ul>
-                <li>Upload a profile picture</li>
-                <li>Add your name and bio</li>
-                <li>Set your preferences and interests</li>
-                <li>Configure notification settings</li>
+                <li>Alege tribunalul</li>
+                <li>Setează intervalul de timp (start & end date)</li>
+                <li>Apasă butonul 'Search'</li>
+                <li>Navigheaza prin tabela</li>
               </ul>
-              <div class="step-tip">
-                <strong>Privacy:</strong> You control what information is visible to others. Review your privacy settings anytime.
-              </div>
             </div>
           `,
-          image: [],
+          image: [search1],
         },
         {
-          title: "Explore Key Features",
+          title: "Exportă in format Excel",
           description:
-            "Discover the main features that make our platform powerful",
+            "Exportă datele dosarelor selectate într-un fișier Excel",
           completed: false,
           content: `
             <div class="step-details">
-              <p>Take some time to explore these essential features:</p>
+              <p>Pentru a genera un fișier Excel cu informațiile din dosare, urmează pașii de mai jos:</p>
               <ul>
-                <li><strong>Dashboard:</strong> Your central hub for all activities</li>
-                <li><strong>Tools:</strong> Access our suite of productivity tools</li>
-                <li><strong>Settings:</strong> Customize your experience</li>
-                <li><strong>Help Center:</strong> Find answers to common questions</li>
+                <li>Caută dosarele necesare (vezi pasul anterior)</li>
+                <li>Alege opțiunea 'Export' din partea de jos a ecranului</li>
+                <li>Alege un nume și o locație pentru fișierul .xlsx</li>
+                <li>Fișierul este disponibil in locația selectată</li>
               </ul>
-              <div class="step-tip">
-                <strong>Tip:</strong> Use keyboard shortcuts to navigate faster. Press '?' to see all available shortcuts.
-              </div>
             </div>
           `,
-          image: [],
+          image: [export1, export2],
         },
         {
-          title: "Connect & Collaborate",
-          description: "Learn how to work with others on the platform",
+          title: "Generarează oferta și Trimite emailuri",
+          description: "Creeaza oferta in format PDF și trimite-o prin e-mail catre tribunale",
           completed: false,
           content: `
             <div class="step-details">
-              <p>Our platform is designed for collaboration. Here's how to connect:</p>
+              <p>Aplicația îți permite să generezi rapid o ofertă standardizată, completată automat cu datele din dosar:</p>
               <ul>
-                <li>Invite team members or colleagues</li>
-                <li>Join existing projects and communities</li>
-                <li>Share your work and get feedback</li>
-                <li>Use our communication tools effectively</li>
+                <li>Adauga variabilele \${tribunal}\, \${departament}\,\${numarDosar}\ și \${debitor}\ in template-ul ofertei</li>
+                <li>Selecteaza butonul 'Preview PDF', apoi alege template-ul de la punctul 1.</li>
+                <li>Selecteaza butonul 'Proceed to Email' pentru a creea email-ul cu PDF atasat</li>
+                <li>După redactarea cămpurilor necesare, poți trimite email-ul</li>
               </ul>
               <div class="step-tip">
-                <strong>Best Practice:</strong> Set clear permissions when sharing to maintain security while enabling collaboration.
+               <strong>Sfat:</strong> Verifică adresa de e-mail oficială a instanței înainte de trimitere și asigură-te că fișierul PDF generat conține toate datele corecte.
               </div>
+              <p>Fisierile PDF vor fi pastrate atat local pe laptop cat si in Google Drive.</p>
             </div>
           `,
-          image: [],
+          image: [pdf1, pdf2, pdf3, email1],
         },
       ],
     };
@@ -970,13 +972,20 @@ export default {
   }
 }
 
+.step-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 2px;
+}
 .step-thumb {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
-  border-radius: 0.5rem;
+  border: 2px solid #0a1c17bb;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s border-color 0.2s;
 }
 .step-thumb:hover {
   transform: scale(1.05);

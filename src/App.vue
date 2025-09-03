@@ -120,14 +120,14 @@ export default {
 <style>
 /* CSS Custom Properties for Design System */
 :root {
-  --logo-color-primary: #401CAF;
-  --logo-color-secondary: #4026A0;
+  --logo-color-primary: #401caf;
+  --logo-color-secondary: #4026a0;
   --primary-color: #251b10;
   --primary-light: #d4b896;
   --primary-dark: #a08b6f;
   --text-primary: #2c2c2c;
   --text-secondary: #2f2c2c;
-  --header-link-color: #452799;
+  --header-link-color:#031D02;
   --text-light: #ffffff;
   --background: #544e4e;
   --background-secondary: #f8f8f8;
