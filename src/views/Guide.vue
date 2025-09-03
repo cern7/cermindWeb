@@ -970,6 +970,9 @@ export default {
   .stat-number {
     font-size: var(--font-size-xl);
   }
+  .step-thumbnails {
+    grid-template-columns: 1fr;
+    }
 }
 
 .step-thumbnails {
