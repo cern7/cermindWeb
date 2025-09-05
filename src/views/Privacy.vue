@@ -131,10 +131,17 @@ export default {
         },
         {
           id: "destinatari",
-          title: "5. Destinatari și transferuri",
+          title: "5. Datele utilizatorilor Google",
           content: `
-            <p>Accesul este limitat la personal autorizat și furnizori tehnici. Nu transferăm date în afara SEE fără garanții GDPR adecvate.</p>
-          `,
+            <p>Aplicația utilizează API-urile Google (precum Gmail și Google Drive) exclusiv pentru a oferi funcționalitățile de bază ale serviciului.</p>
+            <p>Nu colectăm, stocăm, partajăm, transferăm și nu divulgăm către terți niciun fel de date ale utilizatorilor Google obținute prin aceste API-uri.</p>  
+            <p>Toate datele rămân în contul Google al utilizatorului și sunt accesate doar temporar, cu acordul explicit al acestuia, strict pentru furnizarea funcționalităților solicitate.</p>
+            <p>
+              Respectăm <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">
+              Google API Services User Data Policy
+              </a>, inclusiv cerințele privind utilizarea limitată („Limited Use”).
+            </p>
+            `,
         },
         {
           id: "drepturi",

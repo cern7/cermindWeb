@@ -237,7 +237,7 @@ export default {
                 <li>Permisiunea de acces la Gmail și Google Drive (OAuth)</li>
               </ol>
               <div class="step-tip">
-                <strong>Notă:</strong> Aceste permisiuni sunt folosite exclusiv pentru trimiterea e-mailurilor și gestionarea fișierelor PDF în aplicație.
+                <strong>Notă:</strong> Aceste permisiuni sunt folosite exclusiv pentru trimiterea email-urilor și gestionarea fișierelor PDF în aplicație.
                 </div>
             </div>
           `,
@@ -254,7 +254,7 @@ export default {
                 <li>Alege tribunalul</li>
                 <li>Setează intervalul de timp (start & end date)</li>
                 <li>Apasă butonul 'Search'</li>
-                <li>Navigheaza prin tabela</li>
+                <li>Navigheaza prin tabelă</li>
               </ul>
             </div>
           `,
@@ -286,15 +286,15 @@ export default {
             <div class="step-details">
               <p>Aplicația îți permite să generezi rapid o ofertă standardizată, completată automat cu datele din dosar:</p>
               <ul>
-                <li>Adauga variabilele \${tribunal}\, \${departament}\,\${numarDosar}\ și \${debitor}\ in template-ul ofertei</li>
-                <li>Selecteaza butonul 'Preview PDF', apoi alege template-ul de la punctul 1.</li>
-                <li>Selecteaza butonul 'Proceed to Email' pentru a creea email-ul cu PDF atasat</li>
-                <li>După redactarea cămpurilor necesare, poți trimite email-ul</li>
+                <li>Adaugă variabilele \${tribunal}\, \${departament}\,\${numarDosar}\ și \${debitor}\ in template-ul ofertei</li>
+                <li>Selectează butonul 'Preview PDF', apoi alege template-ul de la punctul 1.</li>
+                <li>Selectează butonul 'Proceed to Email' pentru a creea email-ul cu fișierul PDF atașat</li>
+                <li>După redactarea câmpurilor necesare, poți trimite email-ul</li>
               </ul>
               <div class="step-tip">
-               <strong>Sfat:</strong> Verifică adresa de e-mail oficială a instanței înainte de trimitere și asigură-te că fișierul PDF generat conține toate datele corecte.
+               <strong>Sfat:</strong> Verifică adresa de email oficială a instanței înainte de trimitere și asigură-te că fișierul PDF generat conține toate datele corecte.
               </div>
-              <p>Fisierile PDF vor fi pastrate atat local pe laptop cat si in Google Drive.</p>
+              <p>Fisierile PDF vor fi pastrate atat local pe laptop cat și în Google Drive.</p>
             </div>
           `,
           image: [pdf1, pdf2, pdf3, email1],
